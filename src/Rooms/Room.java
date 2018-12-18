@@ -5,7 +5,7 @@ import People.Person;
 public class Room {
     Person occupant;
     int xLoc,yLoc;
-
+    boolean discovered = false;
     public Room(int x, int y)
     {
         xLoc = x;
@@ -18,6 +18,7 @@ public class Room {
      */
     public void enterRoom(Person x)
     {
+        this.discovered = true;
         System.out.println("You enter a plain old room");
         occupant = x;
         x.setxLoc(this.xLoc);
@@ -39,10 +40,10 @@ public class Room {
         {
             return ("[P]");
         }
-//        else if (this.location == false)
-//        {
-//            return ("[?]");
-//        }
+       else if (this.discovered == false)
+       {
+           return ("[?]");
+       }
         else
         {
             return ("[-]");
