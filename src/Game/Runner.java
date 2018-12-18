@@ -12,7 +12,7 @@ public class Runner {
 
     public static void main(String[] args)
     {
-        Room[][] building = new Room[3][3];
+        Room[][] building = new Room[4][4];
 
 
         //Fill the building with normal rooms
@@ -31,19 +31,22 @@ public class Runner {
 
         //Setup player 1 and the input scanner
         Person player1 = new Person("FirstName", "FamilyName", 0,0);
+        Board game = new Board(building);
         building[0][0].enterRoom(player1);
         Scanner in = new Scanner(System.in);
         while(gameOn)
         {
 
-            System.out.println("Press 'm' to see the map");
+            System.out.println("Press 'm' to see the map.");
 //            String again = in.nextLine();
 
 
             System.out.println("Where would you like to move? (Choose N, S, E, W)");
             String move = in.nextLine();
 
-
+            if(move.toLowerCase().trim().equals("m")){
+                game.print();
+            }
             if(validMove(move, player1, building))
             {
                 System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
